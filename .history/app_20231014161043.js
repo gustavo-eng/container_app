@@ -23,16 +23,19 @@ var apiRouter   = require('./routes/tasks');
 var indexLogin  = require('./routes/login');
 
 
-app.use('/task', indexRouter);
-app.use('/api/tasks', apiRouter);
-app.use('/', indexLogin);
+app.use('/task', indexRouter); // tela de tasks
+app.use('/api/tasks', apiRouter); // Backend api
+app.use('/', indexLogin) // tela de login
 
 
 const port = 3000 // mudar para 3333
 
 app.listen(port, () => {
     console.log("Listenning...  in " + port + "port")
+
 })
+
+
 
 
 
