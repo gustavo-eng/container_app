@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 var fs = require('fs');
 
 let controlaAcesso = function (req, res, next) {
-
+  //let token = req.query.token;
   const token = req.header('Custom-Header');
 
 

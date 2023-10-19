@@ -4,11 +4,11 @@ var TaskValidator = require("../validators/TaskValidator")
 var router = express.Router();
 const jwt = require('jsonwebtoken')
 
-
+// --- import files ---
 var fs = require('fs');
-
+// --- import files ---
 let controlaAcesso = function (req, res, next) {
-
+  //let token = req.query.token;
   const token = req.header('Custom-Header');
 
 
@@ -54,7 +54,7 @@ router.get('/files',  function(req, res, next) {
     jsonData.push(novoElemento)
 
     const novoConteudoJSON = JSON.stringify(jsonData);
-
+    console.log('novoConteudoJSON --> ')
 
     fs.writeFile('./files/data.json', novoConteudoJSON, 'utf8', (writeErr) => {
       if (writeErr) {

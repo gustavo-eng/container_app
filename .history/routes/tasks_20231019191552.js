@@ -4,13 +4,16 @@ var TaskValidator = require("../validators/TaskValidator")
 var router = express.Router();
 const jwt = require('jsonwebtoken')
 
-
+// --- import files ---
 var fs = require('fs');
+// --- import files ---
+
 
 let controlaAcesso = function (req, res, next) {
-
+  //let token = req.query.token;
   const token = req.header('Custom-Header');
-
+  console.log('Dentro de controle de acesso, variavel token --> ')
+  console.log(token)
 
   jwt.verify(token, "A1B2C3D4", (err, decoded) => {
 
@@ -34,7 +37,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/files',  function(req, res, next) {
-
+  //console.log('router.get(/files) --> ')
   const data = fs.readFileSync('./files/data.json',   (err, data) => {
     if(err) {
       console.log('nao foi possivel ler o arquivo. ERRO --> ' + err)
@@ -54,7 +57,7 @@ router.get('/files',  function(req, res, next) {
     jsonData.push(novoElemento)
 
     const novoConteudoJSON = JSON.stringify(jsonData);
-
+    console.log('novoConteudoJSON --> ')
 
     fs.writeFile('./files/data.json', novoConteudoJSON, 'utf8', (writeErr) => {
       if (writeErr) {
